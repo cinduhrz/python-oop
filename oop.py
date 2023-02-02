@@ -16,14 +16,25 @@ class Person:
         self.name = name
         self.age = age
     
+# Class Inheritance
+class Teacher(Person):
     
     def teach(self):
         print(f"{self.name} teaches")
         
+    def smile(self):
+        print(f"{self.name} smiles")
+        
 # Instantiating
 # this is a (proper) OBJECT in python, so you CAN use dot notation here
 # this is NOT a dictionary
-alex = Person("Amy", 37)
+alex = Teacher("Alex", 37)
 
 print(alex.name, alex.age)
 alex.teach()
+
+class Dog:
+    pass
+
+sparky = Dog()
+print (sparky)
