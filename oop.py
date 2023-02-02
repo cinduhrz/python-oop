@@ -84,6 +84,7 @@ class Calculator:
     
     @classmethod
     def calculate(cls, num1, num2, operator):
+        print(cls)
         # eval() takes a string and evaluates it as code
         # NEVER use it in prod
         # bc if you eval user input for example, you will run whatever the user puts in
@@ -98,6 +99,12 @@ class Calculator:
     @staticmethod
     def showLastResult():
         print(Calculator.lastResult)
+        
+class C(Calculator):
+    pass
+
+
             
 Calculator.calculate(2, 2, "+")
+C.calculate(3, 3, "-")  # child class doesn't alter static prop of parent class (bc that static method that alters it has the parent class HARDCODED into it)
 Calculator.showLastResult()
