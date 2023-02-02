@@ -79,7 +79,25 @@ print (sparky) # prints object at memory address
 print(sparky.name, sparky.age, sparky.breed, sparky.sweater_color)
 sparky.bark()
 
-
-## Data Structures
-
-# Queue
+class Calculator:
+    lastResult = 0
+    
+    @classmethod
+    def calculate(cls, num1, num2, operator):
+        # eval() takes a string and evaluates it as code
+        # NEVER use it in prod
+        # bc if you eval user input for example, you will run whatever the user puts in
+        # so users can mess with your code
+        # makes things easier but a lot less secure
+        cls.lastResult = eval(f"{num1} {operator} {num2}")
+        return cls.lastResult
+        
+        # static method
+        # a pure function that has no access to any instance
+        # doesnt need to talk self as arg
+    @staticmethod
+    def showLastResult():
+        print(Calculator.lastResult)
+            
+Calculator.calculate(2, 2, "+")
+Calculator.showLastResult()
