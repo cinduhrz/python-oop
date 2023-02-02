@@ -34,7 +34,52 @@ print(alex.name, alex.age)
 alex.teach()
 
 class Dog:
-    pass
+    ## static variables
+    ## outside the constructor
+    
+    # is a property of the class itself, not the instantiated objects
+    # accessed like this: Dog.count
+    count = 0
+    
+    
+    # classmethod
+    # @ indicates that this function works a lil diff
+    # the entire Dog class is passed to this method
+    @classmethod
+    def one_more_dog(cls):
+        cls.count += 1
+    
+    
+    def __init__(self, name, breed, age):
+        self.name = name
+        self.age = age
+        self.breed = breed
+        Dog.one_more_dog() # this function belongs to the entire class (Dog), not to self
+        
+    def bark(self):
+        print(f"{self.name} barks")
+        
+class SmallDog(Dog):
+    
+    ## overwriting (writing a version of a function that takes priority in a child class)
+    def __init__(self, name, age, breed, sweater_color):
+        ## call parent constructor so u dont have to write redundant stuff again
+        ## keeps code DRY
+        super().__init__(name, age, breed)
+        self.sweater_color = sweater_color
+        
+    def bark(self):
+        print(f"{self.name} yaps")
 
-sparky = Dog()
-print (sparky)
+sparky = SmallDog("Sparky", 4, "Pug", "Orange")
+biff = SmallDog("Biff", 5, "Pug", "Pink")
+print(Dog.count)
+
+print (sparky) # prints object at memory address
+print(sparky.name, sparky.age, sparky.breed, sparky.sweater_color)
+sparky.bark()
+
+
+## Data Structures
+
+# Queue
